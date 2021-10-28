@@ -2,7 +2,7 @@
 
 ## 第一步
 ```
-git clone https://github.com/ModestFun/paging-web.git
+git clone https://github.com/ModestFun/paging-list.git
 
 cd paging-web 
 ```
