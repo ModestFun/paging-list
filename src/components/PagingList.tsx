@@ -1,17 +1,20 @@
-export default function PagingList(props: { list: any[] }) {
-  const { list } = props;
-  if (list.length) {
-    return (
-      <ul>
-        {list.map((item) => (
-          <li key={item.id}>
-            {item.name} - {item.email}
-          </li>
-        ))}
-      </ul>
-    )
-  }
+import List from "antd/lib/list";
+import { user } from "../interface";
+
+export function PagingList(props: any) {
+  const { loading, list } = props;
   return (
-    <div>暂无数据，请检查网络后重试</div>
+    <div>
+      <p style={{ display: loading ? 'block' : 'none' }}>loading</p>
+      <List
+        style={{ display: !loading ? 'block' : 'none' }}
+        size="large"
+        dataSource={list}
+        renderItem={(item: user) => (
+          <List.Item style={{ color: 'white' }}>
+            {item.name} - {item.email}
+          </List.Item>
+        )} />
+    </div>
   )
 }

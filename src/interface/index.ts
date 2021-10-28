@@ -4,19 +4,19 @@ export interface user {
   email: string;
 }
 
-export interface RequestData {
+export interface PagingData {
   list: user[];
   total: number; // 总页数
 }
 
-export interface RequestList {
-  data: RequestData;
+export interface RequestTemplate{
+  data: PagingData;
   success: boolean;
   message: string; // exist when success is false
 }
 
 export interface FetchDataReturnValue {
-  data: RequestData | null,
+  data: PagingData | null,
   loading: boolean,
   pagination: Pagination,
 }

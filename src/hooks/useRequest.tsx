@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { FetchDataReturnValue, RequestData } from "../interface";
+import { FetchDataReturnValue, PagingData } from "../interface";
 
 interface FetchDataOptions {
   pageSize?: number;
@@ -8,11 +8,10 @@ interface FetchDataOptions {
 }
 
 export function useFetchData(getList: (pageNum: number, pageSize: number) => any, options?: FetchDataOptions): FetchDataReturnValue {
-  const [data, setData] = useState<RequestData | null>(null);
+  const [data, setData] = useState<PagingData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [current, setCurrent] = useState<number>(options?.pageNum ?? 1);
   const [pageSize, setPageSize] = useState<number>(options?.pageSize ?? 10);
-  const [total, setTotal] = useState<number>(0);
 
   const fetchList = useMemo(() => (pageNum: number, pageSize: number) =>
     getList(pageNum, pageSize), []);
@@ -27,23 +26,19 @@ export function useFetchData(getList: (pageNum: number, pageSize: number) => any
   const refreshList = useCallback(
     async (page: number, size: number) => {
       setLoading(true);
-      const data = await fetchList(page, size);
-      setTotal(data.total);
-      setData(data);
+      setData(await fetchList(page, size));
       setLoading(false);
     }, []);
 
   useEffect(() => {
-    if (current && pageSize) {
-      refreshList(current, pageSize);
-    }
+    refreshList(current, pageSize);
   }, []);
 
   return {
     data,
     loading,
     pagination: {
-      total,
+      total: data?.total || 0,
       onChange: handleChange,
       current,
       pageSize
