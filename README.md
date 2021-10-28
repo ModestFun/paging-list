@@ -4,7 +4,7 @@
 ```
 git clone https://github.com/ModestFun/paging-list.git
 
-cd paging-web 
+cd paging-list 
 ```
 
 ## 第二步
