@@ -3,16 +3,16 @@
 ## 第一步
 ```
 git clone https://github.com/ModestFun/paging-web.git
+
+cd paging-web 
 ```
 
 ## 第二步
 ```
-cd paging-web & yarn
-```
+yarn
 
-## 第三步
-```
 yarn start
 ```
+
 
 > 将会自动启动 node 与 react 服务
