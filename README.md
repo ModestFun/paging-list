@@ -24,3 +24,28 @@ yarn start
 # 错误处理
 
 ![image.png](https://pan.udolphin.com/files/image/2021/10/a148220b5c86cecf426f6f0805f97364.png)
+
+# 使用方式
+## useFetchData
+```js
+ const { data, loading, pagination } = useFetchData(getPagingList);
+
+  return (
+    <div>
+      <PagingList loading={loading} list={data?.list} />
+      <Pagination {...pagination} />
+    </div>
+  )
+```
+
+## useFromFetchModel
+```js
+const { data, loading, pagination } = useFromFetchModel(PagingListModel);
+
+  return (
+    <div>
+      <PagingList loading={loading} list={data?.list} />
+      <Pagination {...pagination} />
+    </div>
+  )
+```
