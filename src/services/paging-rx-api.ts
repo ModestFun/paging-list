@@ -28,7 +28,6 @@ function handleRequest(request: Observable<Response>) {
 }
 
 const pagingRxService = {
-  // 这个代表了一切的‘读’的方法
   loadList(params: FetchPagingListParams) {
     return fromFetch("/api/list", {
       method: 'post',
