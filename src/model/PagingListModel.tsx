@@ -1,5 +1,5 @@
 import { BehaviorSubject, combineLatest } from "rxjs"
-import { map, switchMap } from "rxjs/operators"
+import { switchMap } from "rxjs/operators"
 import pagingRxService from "../services/paging-rx-api"
 
 class PagingListModel {
@@ -15,9 +15,6 @@ class PagingListModel {
       return pagingRxService.loadList({
         ...pagination,
       })
-    }),
-    map((x) => {
-      return x;
     })
   )
 
