@@ -1,17 +1,14 @@
 import './App.css';
-import { useFetchData } from './hooks/useRequest';
-import { Pagination } from 'antd';
-import { getPagingList } from './services/paging-api';
-import { PagingList } from './components/PagingList';
+import NormalPage from './components/NormalPage';
+import RxPage from './components/RxPage';
 
 function App() {
-  const { data, loading, pagination } = useFetchData(getPagingList);
 
   return (
     <div className="App">
       <header className="App-header">
-        <PagingList loading={loading} list={data?.list} />
-        <Pagination {...pagination} />
+        <NormalPage />
+        <RxPage />
       </header>
     </div>
   );
